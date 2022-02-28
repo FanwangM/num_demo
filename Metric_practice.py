@@ -1,50 +1,56 @@
 import numpy as np
 
 # mock feature matrix
-feature = np.array([  [4, 2, 6],
-                      [4, 9, 6],
-                      [2, 5, 0],
-                      [2, 0, 9],
-                      [5, 3, 0]])
+feature = np.array([[4, 2, 6],
+                    [4, 9, 6],
+                    [2, 5, 0],
+                    [2, 0, 9],
+                    [5, 3, 0]])
 
 
 def euclidean_distance(x, y):
-    """
-    Computes the euclidean distance between two vectors
-    ----------
+    """The distance between two vectors
+    
+    Computs the eucladian distance between vectors x and y
+    
     Parameters
     ----------
-    x : first vector
-    y : second vector
-    -------
+    x : array_like
+        the first feature vector
+    y : array_like
+        the second feature vector
+   
     Returns
     -------
-    distance : euclidan distance between x and y
+    distance : ndarray
+        the euclidean distance between the two vectors
     """
-    intermdiate = 0
-    for i in range(0, len(x)):
-        intermdiate += ((x[i] - y[i])**2)
-    distance = np.sqrt(intermdiate)
+    distance = np.sqrt(sum(((x - y)) ** 2))
     return distance
 
 
-def pairwaise_distance(matrix):
-    """
-    Computes the pairwise distance between each vectore
-    in a given matrix
-    ----------
+def pairwise_distance(Z):
+    """Pairwise distance between vectors
+
+    Computes the pairwise distance between each vector
+    in a given array
+    
     Parameters
     ----------
-    matrix : given matrix
-    -------
+    Z : ndarray
+        an m by n array
+    
     Returns
     -------
-    perwise_distance : the condensed pairwise distance
+    per_dist : ndarray
+        the condensed pairwise distance matrix
     """
     per_dist = []
-    for i in range(0,(len(matrix)-1)):
-        for j in range(i + 1,(len(matrix))):
-            per_dist.append(euclidean_distance(matrix[i],matrix[j]))
+    for i in range(0, (len(Z) - 1)):
+        for j in range(i + 1, (len(Z))):
+            per_dist.append(euclidean_distance(Z[i],Z[j]))
     return per_dist
 
-print(pairwaise_distance(feature))
+
+if __name__ == "__main__":
+    print(pairwise_distance(feature))
