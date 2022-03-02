@@ -11,7 +11,7 @@ feature = np.array([[4, 2, 6],
 def euclidean_distance(x, y):
     """The distance between two vectors
     
-    Computs the eucladian distance between vectors x and y
+    Computs the eucladian distance between vectors x and y.
     
     Parameters
     ----------
@@ -29,15 +29,14 @@ def euclidean_distance(x, y):
     return distance
 
 
-def pairwise_distance(Z):
+def pairwise_distance(z):
     """Pairwise distance between vectors
 
-    Computes the pairwise distance between each vector
-    in a given array
+    Computes the pairwise distance between each vector in a given array.
     
     Parameters
     ----------
-    Z : ndarray
+    z : ndarray
         an m by n array
     
     Returns
@@ -46,9 +45,9 @@ def pairwise_distance(Z):
         the condensed pairwise distance matrix
     """
     per_dist = []
-    for i in range(0, (len(Z) - 1)):
-        for j in range(i + 1, (len(Z))):
-            per_dist.append(euclidean_distance(Z[i],Z[j]))
+    for i in range(0, (len(z) - 1)):
+        for j in range(i + 1, (len(z))):
+            per_dist.append(euclidean_distance(z[i],z[j]))
     return per_dist
 
 
